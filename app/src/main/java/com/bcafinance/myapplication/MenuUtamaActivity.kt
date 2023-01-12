@@ -15,5 +15,10 @@ class MenuUtamaActivity : AppCompatActivity() {
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         })
+
+        cardChangePass.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this,ChangePasswordActivity::class.java)
+            startActivity(intent)
+        })
     }
 }
