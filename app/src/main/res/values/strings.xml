@@ -25,4 +25,9 @@
         <item>Janji bayar</item>
         <item>Tidak bertemu konsumen</item>
     </string-array>
+
+    <string-array name="statusOrder">
+        <item>Terminator</item>
+        <item>Hulk</item>
+    </string-array>
 </resources>
