@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string-array name="status">
+        <item>Ada</item>
+        <item>Tidak Ada</item>
+    </string-array>
+    <string-array name="unit">
+        <item>Nama Pemegang Unit</item>
+        <item>Tidak Ditemukan</item>
+        <item>Balik Nama</item>
+    </string-array>
+    <string-array name="alamat">
+        <item>Sesuai</item>
+        <item>Tidak</item>
+        <item>Tidak Ditemukan</item>
+    </string-array>
+    <string-array name="bertemu">
+        <item>Konsumen</item>
+        <item>Kerabat</item>
+        <item>Tetangga</item>
+    </string-array>
+    <string-array name="hasil">
+        <item>Bayar angsuran cash ke Field Collector</item>
+        <item>Pelunasan dipercepat</item>
+        <item>Janji bayar</item>
+        <item>Tidak bertemu konsumen</item>
+    </string-array>
+</resources>
