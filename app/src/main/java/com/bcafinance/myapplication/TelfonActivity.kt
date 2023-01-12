@@ -1,4 +1,4 @@
-    package com.bcafinance.myapplication
+package com.bcafinance.myapplication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -14,11 +14,16 @@ import kotlinx.android.synthetic.main.activity_telfon.*
         setContentView(R.layout.activity_telfon)
 
             teleponYa.setOnClickListener({
-                txtPrfx.visibility = View.INVISIBLE
-                cardPrefix.visibility = View.INVISIBLE
-                txtTlp1.visibility = View.INVISIBLE
-                cardTlp1.visibility = View.INVISIBLE
+                txtPrfx.visibility = View.GONE
+                cardPrefix.visibility = View.GONE
+                txtTlp1.visibility = View.GONE
+                cardTlp1.visibility = View.GONE
             })
+
+            telepon2Ya.setOnClickListener {
+                txtVwTelpon2.visibility = View.GONE
+                cardTelfon2.visibility = View.GONE
+            }
 
             telefonTidak.setOnClickListener({
                 txtPrfx.visibility = View.VISIBLE
@@ -26,6 +31,13 @@ import kotlinx.android.synthetic.main.activity_telfon.*
                 txtTlp1.visibility = View.VISIBLE
                 cardTlp1.visibility = View.VISIBLE
             })
+
+            telefon2Tidak.setOnClickListener {
+                txtVwTelpon2.visibility = View.VISIBLE
+                cardTelfon2.visibility = View.VISIBLE
+            }
+
+
 
         btnLanjut3.setOnClickListener({
             intent = Intent(this, SptActivity::class.java)

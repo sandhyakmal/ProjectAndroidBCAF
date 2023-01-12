@@ -9,10 +9,10 @@ import retrofit2.http.Query
 interface OMDBApiInterface {
     //http://www.omdbapi.com/?apikey=8a97b2ee&s=Terminator
 
-    @GET("/?apikey=80641bfb")
+    @GET("/?apikey=8a97b2ee")
     fun searchMovie(@Query("s") search:String) : Call<OMDBResponse>
 
-    @GET("/?apikey=80641bfb")
+    @GET("/?apikey=8a97b2ee")
     fun searchMoviebyId(@Query("i") id:String) : Call<OMDBDetailResponse>
 
 
