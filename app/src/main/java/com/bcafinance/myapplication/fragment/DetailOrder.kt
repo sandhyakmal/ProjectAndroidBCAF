@@ -30,6 +30,11 @@ class DetailOrder : Fragment(), ICallBackNetwork {
     private var param1: String? = null
     private var param2: String? = null
     private var tlf1:String? = null
+    private var tlf2:String? = null
+    private var mailAddress:String? = null
+    private var userId:String? = null
+    private var agingDate:String? = null
+    private var accountNumber:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +54,13 @@ class DetailOrder : Fragment(), ICallBackNetwork {
 
         view.btnInputKunjungan.setOnClickListener(View.OnClickListener {
             val intent = Intent (getActivity(), InpKunjunganActivity::class.java)
-            intent.putExtra("telfon1", tlf1)
+            intent.putExtra("tlf1", tlf1)
+            intent.putExtra("tlf2", tlf2)
+            intent.putExtra("mailAddress", mailAddress)
+            intent.putExtra("userId", userId)
+            intent.putExtra("agingDate", agingDate)
+            intent.putExtra("accountNumber", accountNumber)
+
             getActivity()?.startActivity(intent)
         })
         return view
