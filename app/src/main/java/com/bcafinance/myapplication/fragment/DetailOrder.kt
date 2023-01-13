@@ -78,17 +78,12 @@ class DetailOrder : Fragment(), ICallBackNetwork {
     }
 
     override fun onFinishDetail(data: OMDBDetailResponse) {
-        txtCustomer.setText(data.title)
-        txtTypes.setText(data.type)
-        txtAccounts.setText(data.imdbID)
-        txtSpouseName.setText(data.director)
-        txtAddressKTP.setText(data.plot)
-        txtAddressHome.setText(data.plot)
-        txtMailAddress.setText(data.plot)
-
+        TODO("Not yet implemented")
     }
 
     override fun onFailed() {
         TODO("Not yet implemented")
     }
+
+
 }
