@@ -9,6 +9,10 @@ class userResponse {
     var data: User? = null
 
     class User {
+        @SerializedName("id")
+        @Expose
+        var id: String? = null
+
         @SerializedName("collectName")
         @Expose
         var collectName: String? = null

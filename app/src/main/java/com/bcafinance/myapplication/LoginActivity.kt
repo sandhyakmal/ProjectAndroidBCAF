@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -17,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
 class LoginActivity : AppCompatActivity() {
 //
@@ -34,15 +32,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun initAction(){
-         btnLogin.setOnClickListener(View.OnClickListener {
+         btnChangePass.setOnClickListener(View.OnClickListener {
              login()
          })
     }
 
     fun login(){
         val request = userRequest()
-        request.uniqId = txtUsername.text.toString().trim()
-        request.password = txtPassword.text.toString().trim()
+        request.uniqId = txtPasswordOld.text.toString().trim()
+        request.password = txtPasswordNew.text.toString().trim()
 
         val retro = Retro().getRetroClientInstance().create(UserApi::class.java)
         retro.login(request).enqueue(object : Callback<userResponse> {
