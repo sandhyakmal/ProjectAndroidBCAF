@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bcafinance.myapplication.R
 import com.example.projectjuara.ICallBackNetwork
 import com.bcafinance.myapplication.MainActivity
+import com.bcafinance.myapplication.adapter.OrderAdapter
+import com.bcafinance.myapplication.model.Data
+import com.bcafinance.myapplication.model.DataItem
 import com.example.projectjuara.adapter.MovieListAdapter
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.SearchItem
@@ -55,7 +58,7 @@ class ListOrder : Fragment(),ICallBackNetwork {
 
         view.spinner.onItemSelectedListener = object : OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                (activity as MainActivity).searchMovie(view.spinner.selectedItem.toString(),this@ListOrder)
+                (activity as MainActivity).searchOrder(view.spinner.selectedItem.toString(),this@ListOrder)
                 view.textView3.setText(view.spinner.selectedItem.toString())
             }
 
@@ -88,19 +91,28 @@ class ListOrder : Fragment(),ICallBackNetwork {
     }
 
     lateinit var dataMovie :List<SearchItem>
-    override fun onFinish(data: List<SearchItem>) {
-        dataMovie = data
-        var adapterx = MovieListAdapter()
-        adapterx.data = data
+    lateinit var dataOrder :List<DataItem>
+
+    override fun onFinishOrder(datas: List<DataItem>) {
+        dataOrder = datas
+        var adapterx = OrderAdapter()
+        adapterx.data = datas
 
         recyclerOrder.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterx
         }
+    }
 
+    override fun onFinish(data: List<SearchItem>) {
+        TODO("Not yet implemented")
     }
 
     override fun onFinishDetail(data: OMDBDetailResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFinishDetailOrder(data: Data) {
         TODO("Not yet implemented")
     }
 

@@ -10,6 +10,8 @@ import com.bcafinance.myapplication.InpKunjunganActivity
 import com.bcafinance.myapplication.R
 import com.example.projectjuara.ICallBackNetwork
 import com.bcafinance.myapplication.MainActivity
+import com.bcafinance.myapplication.model.Data
+import com.bcafinance.myapplication.model.DataItem
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.SearchItem
 import kotlinx.android.synthetic.main.fragment_detail_order.*
@@ -44,7 +46,7 @@ class DetailOrder : Fragment(), ICallBackNetwork {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_detail_order, container, false)
-        (context as MainActivity).searchMoviebyId(param1.toString(),this)
+        (context as MainActivity).searchOrderbyAccountNumber(param1.toString(),this)
 
         view.btnInputKunjungan.setOnClickListener(View.OnClickListener {
             val intent = Intent (getActivity(), InpKunjunganActivity::class.java)
@@ -73,19 +75,27 @@ class DetailOrder : Fragment(), ICallBackNetwork {
             }
     }
 
+
+    override fun onFinishOrder(datas: List<DataItem>) {
+        TODO("Not yet implemented")
+    }
+
     override fun onFinish(data: List<SearchItem>) {
         TODO("Not yet implemented")
     }
 
     override fun onFinishDetail(data: OMDBDetailResponse) {
-        txtCustomer.setText(data.title)
-        txtTypes.setText(data.type)
-        txtAccounts.setText(data.imdbID)
-        txtSpouseName.setText(data.director)
-        txtAddressKTP.setText(data.plot)
-        txtAddressHome.setText(data.plot)
-        txtMailAddress.setText(data.plot)
 
+    }
+
+    override fun onFinishDetailOrder(data: Data) {
+        txtCustomer.setText(data.name)
+        txtTypes.setText(data.type)
+        txtAccounts.setText(data.accountNumber)
+        txtSpouseName.setText(data.spouseName)
+        txtAddressKTP.setText(data.ktpAddress)
+        txtAddressHome.setText(data.homeAddress)
+        txtMailAddress.setText(data.mailAddress)
     }
 
     override fun onFailed() {

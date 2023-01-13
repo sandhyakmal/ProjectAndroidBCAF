@@ -27,7 +27,7 @@
     </string-array>
 
     <string-array name="statusOrder">
-        <item>Terminator</item>
-        <item>Hulk</item>
+        <item>Jakarta</item>
+        <item>Bekasi</item>
     </string-array>
 </resources>
