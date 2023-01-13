@@ -1,8 +1,6 @@
 package com.bcafinance.myapplication.service
 
 import com.bcafinance.myapplication.model.DataKunjungan
-import com.bcafinance.myapplication.model.OMDBDetailResponse
-import com.bcafinance.myapplication.model.OMDBResponse
 import com.bcafinance.myapplication.model.ResponseDataKunjungan
 import retrofit2.Call
 import retrofit2.http.Body
@@ -11,13 +9,6 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface OMDBApiInterface {
-    //http://www.omdbapi.com/?apikey=8a97b2ee&s=Terminator
-
-    @GET("/?apikey=8a97b2ee")
-    fun searchMovie(@Query("s") search:String) : Call<OMDBResponse>
-
-    @GET("/?apikey=8a97b2ee")
-    fun searchMoviebyId(@Query("i") id:String) : Call<OMDBDetailResponse>
 
     @POST("/api/v1/kunjungan")
     fun sendKunjungan(@Body dataKunjungan: DataKunjungan): Call<ResponseDataKunjungan>

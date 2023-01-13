@@ -50,7 +50,7 @@ data class DataKunjungan(
 	val statusKonsumen: String? = null,
 
 	@field:SerializedName("accountId")
-	val accountId: String? = null,
+	val accountId: Int? = null,
 
 	@field:SerializedName("fotoKtp")
 	val fotoKtp: String? = null,

@@ -24,7 +24,9 @@ class SptActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener {
             postDataKunjungan()
             finish()
-            val intent = Intent(this, MenuUtamaActivity::class.java)
+            val intent = Intent(this, InpKunjunganActivity::class.java)
+
+//            val intent = Intent(this, MenuUtamaActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
@@ -43,11 +45,11 @@ class SptActivity : AppCompatActivity() {
             true,
             "bapakmu",
             2,
-            "asdasd",
+            "asdasDFFDsddasd",
             true,
             "ada",
-            "asdadas",
-            "asdasdas",
+            5,
+            "aFDFDsasdas",
             "ada",
             "2022-05-04",
             "ada")

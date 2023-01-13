@@ -16,13 +16,6 @@ class NetworkConfig {
 
         return  okHttpClient
     }
-    fun getRetrofit() : Retrofit{
-        return  Retrofit.Builder()
-            .baseUrl("https://www.omdbapi.com")
-            .client(getInterceptor())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
 
     var ip = "192.168.137.64"
 
@@ -34,7 +27,6 @@ class NetworkConfig {
             .build()
     }
 
-    fun getServiceOMDB() = getRetrofit().create(OMDBApiInterface::class.java)
     fun getServiceKunjungan() = getRetrofitKunjungan().create(OMDBApiInterface::class.java)
 
 }

@@ -17,7 +17,7 @@ class InpKunjunganActivity : AppCompatActivity() {
         var accountNumber = intent.getStringExtra("accountNumber")
 
         btnLanjut.setOnClickListener {
-            if(txtAlamat.selectedItem.toString().equals("Tidak")){
+            if(txtAlamat.selectedItem.toString().equals("Tidak Sesuai")){
                 intent = Intent(this, AlamatNotValidActivity::class.java)
                 intent.putExtra("tlf1", tlf1)
                 intent.putExtra("tlf2", tlf2)
