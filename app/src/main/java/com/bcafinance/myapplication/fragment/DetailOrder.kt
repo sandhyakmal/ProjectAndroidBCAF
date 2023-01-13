@@ -12,6 +12,7 @@ import com.example.projectjuara.ICallBackNetwork
 import com.bcafinance.myapplication.MainActivity
 import com.bcafinance.myapplication.model.Data
 import com.bcafinance.myapplication.model.DataItem
+import com.bcafinance.myapplication.model.OrderDetailResponse
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.SearchItem
 import kotlinx.android.synthetic.main.fragment_detail_order.*
@@ -88,14 +89,14 @@ class DetailOrder : Fragment(), ICallBackNetwork {
 
     }
 
-    override fun onFinishDetailOrder(data: Data) {
-        txtCustomer.setText(data.name)
-        txtTypes.setText(data.type)
-        txtAccounts.setText(data.accountNumber)
-        txtSpouseName.setText(data.spouseName)
-        txtAddressKTP.setText(data.ktpAddress)
-        txtAddressHome.setText(data.homeAddress)
-        txtMailAddress.setText(data.mailAddress)
+    override fun onFinishDetailOrder(data: OrderDetailResponse) {
+        txtCustomer.setText(data.data?.name)
+        txtTypes.setText(data.data?.type)
+        txtAccounts.setText(data.data?.accountNumber)
+        txtSpouseName.setText(data.data?.spouseName)
+        txtAddressKTP.setText(data.data?.ktpAddress)
+        txtAddressHome.setText(data.data?.homeAddress)
+        txtMailAddress.setText(data.data?.mailAddress)
     }
 
     override fun onFailed() {

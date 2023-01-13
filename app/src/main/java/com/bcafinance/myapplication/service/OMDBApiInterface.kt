@@ -1,6 +1,7 @@
 package com.example.projectjuara.service
 
 import com.bcafinance.myapplication.model.Data
+import com.bcafinance.myapplication.model.OrderDetailResponse
 import com.bcafinance.myapplication.model.OrderResponse
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.OMDBResponse
@@ -23,7 +24,7 @@ interface OMDBApiInterface {
     fun searchOrder(@Query("coveran") search:String) : Call<OrderResponse>
 
     @GET("/api/v1/account/for/user/detail")
-    fun searchOrderbyAccountNumber(@Query("accountNumber") account:String) : Call<Data>
+    fun searchOrderbyAccountNumber(@Query("accountNumber") account:String) : Call<OrderDetailResponse>
 
 
 

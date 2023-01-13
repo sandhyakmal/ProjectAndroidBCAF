@@ -15,6 +15,7 @@ import com.bcafinance.myapplication.MainActivity
 import com.bcafinance.myapplication.adapter.OrderAdapter
 import com.bcafinance.myapplication.model.Data
 import com.bcafinance.myapplication.model.DataItem
+import com.bcafinance.myapplication.model.OrderDetailResponse
 import com.example.projectjuara.adapter.MovieListAdapter
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.SearchItem
@@ -112,7 +113,7 @@ class ListOrder : Fragment(),ICallBackNetwork {
         TODO("Not yet implemented")
     }
 
-    override fun onFinishDetailOrder(data: Data) {
+    override fun onFinishDetailOrder(data: OrderDetailResponse) {
         TODO("Not yet implemented")
     }
 

@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.fragment.app.FragmentTransaction
 import com.bcafinance.myapplication.model.Data
 import com.bcafinance.myapplication.model.DataItem
+import com.bcafinance.myapplication.model.OrderDetailResponse
 import com.bcafinance.myapplication.model.OrderResponse
 import com.example.projectjuara.ICallBackNetwork
 import com.example.projectjuara.fragment.DetailOrder
@@ -56,17 +57,17 @@ class MainActivity : AppCompatActivity() {
 
     fun searchOrderbyAccountNumber(accountNumber:String, callbackNetwork: DetailOrder) {
 
-        NetworkConfig().getServiceUjian().searchOrderbyAccountNumber(accountNumber).enqueue(object : Callback<Data>{
+        NetworkConfig().getServiceUjian().searchOrderbyAccountNumber(accountNumber).enqueue(object : Callback<OrderDetailResponse>{
             override fun onResponse(
-                call: Call<Data>,
-                response: Response<Data>
+                call: Call<OrderDetailResponse>,
+                response: Response<OrderDetailResponse>
             ) {
                 if(response.body() !=null) {
-                    callbackNetwork.onFinishDetailOrder(response.body() as Data)
+                    callbackNetwork.onFinishDetailOrder(response.body() as OrderDetailResponse)
                 }
             }
 
-            override fun onFailure(call: Call<Data>, t: Throwable) {
+            override fun onFailure(call: Call<OrderDetailResponse>, t: Throwable) {
                 TODO("Not yet implemented")
             }
 
