@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bcafinance.myapplication.InpKunjunganActivity
 import com.bcafinance.myapplication.R
 import com.example.projectjuara.ICallBackNetwork
 import com.bcafinance.myapplication.MainActivity
-import com.bcafinance.myapplication.model.Data
 import com.bcafinance.myapplication.model.DataItem
 import com.bcafinance.myapplication.model.OrderDetailResponse
 import com.example.projectjuara.model.OMDBDetailResponse
@@ -49,10 +47,10 @@ class DetailOrder : Fragment(), ICallBackNetwork {
         val view = inflater.inflate(R.layout.fragment_detail_order, container, false)
         (context as MainActivity).searchOrderbyAccountNumber(param1.toString(),this)
 
-        view.btnInputKunjungan.setOnClickListener(View.OnClickListener {
-            val intent = Intent (getActivity(), InpKunjunganActivity::class.java)
-            getActivity()?.startActivity(intent)
-        })
+//        view.btnInputKunjungan.setOnClickListener(View.OnClickListener {
+//            val intent = Intent (getActivity(), InpKunjunganActivity::class.java)
+//            getActivity()?.startActivity(intent)
+//        })
         return view
     }
 
