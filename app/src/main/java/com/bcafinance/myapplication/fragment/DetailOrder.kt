@@ -84,6 +84,10 @@ class DetailOrder : Fragment(), ICallBackNetwork {
 
     }
 
+    override fun onFinishOrder(data: List<DataItem>) {
+        TODO("Not yet implemented")
+    }
+
     override fun onFinishDetailOrder(data: OrderDetailResponse) {
         txtCustomer.setText(data.data?.name)
         txtTypes.setText(data.data?.type)

@@ -41,7 +41,7 @@ class NetworkConfig {
 
     fun getRetrofitUjian() : Retrofit{
         return  Retrofit.Builder()
-            .baseUrl("http://192.168.200.166:8080")
+            .baseUrl("http://192.168.137.64:8080")
             .client(getInterceptorUjian())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
