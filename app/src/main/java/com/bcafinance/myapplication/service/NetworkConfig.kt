@@ -29,4 +29,25 @@ class NetworkConfig {
     fun getServiceOMDB() = getRetrofit().create(OMDBApiInterface::class.java)
 
 
+    //UJIAN API
+    fun getInterceptorUjian() : OkHttpClient {
+        var logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+
+        val okHttpClient  = OkHttpClient.Builder().addInterceptor(logging).build()
+
+        return  okHttpClient
+    }
+
+    fun getRetrofitUjian() : Retrofit{
+        return  Retrofit.Builder()
+            .baseUrl("http://192.168.200.166:8080")
+            .client(getInterceptorUjian())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    fun getServiceUjian() = getRetrofitUjian().create(OMDBApiInterface::class.java)
+
+
 }

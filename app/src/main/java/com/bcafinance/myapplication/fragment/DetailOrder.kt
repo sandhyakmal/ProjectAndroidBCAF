@@ -10,6 +10,9 @@ import com.bcafinance.myapplication.InpKunjunganActivity
 import com.bcafinance.myapplication.R
 import com.example.projectjuara.ICallBackNetwork
 import com.bcafinance.myapplication.MainActivity
+import com.bcafinance.myapplication.model.Data
+import com.bcafinance.myapplication.model.DataItem
+import com.bcafinance.myapplication.model.OrderDetailResponse
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.SearchItem
 import kotlinx.android.synthetic.main.fragment_detail_order.*
@@ -44,7 +47,7 @@ class DetailOrder : Fragment(), ICallBackNetwork {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_detail_order, container, false)
-        (context as MainActivity).searchMoviebyId(param1.toString(),this)
+        (context as MainActivity).searchOrderbyAccountNumber(param1.toString(),this)
 
         view.btnInputKunjungan.setOnClickListener(View.OnClickListener {
             val intent = Intent (getActivity(), InpKunjunganActivity::class.java)
@@ -78,12 +81,20 @@ class DetailOrder : Fragment(), ICallBackNetwork {
     }
 
     override fun onFinishDetail(data: OMDBDetailResponse) {
-        TODO("Not yet implemented")
+
+    }
+
+    override fun onFinishDetailOrder(data: OrderDetailResponse) {
+        txtCustomer.setText(data.data?.name)
+        txtTypes.setText(data.data?.type)
+        txtAccounts.setText(data.data?.accountNumber)
+        txtSpouseName.setText(data.data?.spouseName)
+        txtAddressKTP.setText(data.data?.ktpAddress)
+        txtAddressHome.setText(data.data?.homeAddress)
+        txtMailAddress.setText(data.data?.mailAddress)
     }
 
     override fun onFailed() {
         TODO("Not yet implemented")
     }
-
-
 }
