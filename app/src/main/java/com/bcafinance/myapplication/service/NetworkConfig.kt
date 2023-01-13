@@ -1,14 +1,12 @@
-package com.example.projectjuara.service
+package com.bcafinance.myapplication.service
 
+import com.bcafinance.myapplication.service.OMDBApiInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class NetworkConfig {
-
-
     //OMDB API
     fun getInterceptor() : OkHttpClient {
         var logging = HttpLoggingInterceptor()
@@ -26,7 +24,17 @@ class NetworkConfig {
             .build()
     }
 
-    fun getServiceOMDB() = getRetrofit().create(OMDBApiInterface::class.java)
+    var ip = "192.168.200.166"
 
+    fun getRetrofitKunjungan(): Retrofit{
+        return Retrofit.Builder()
+            .baseUrl("http://${ip}:8080")
+            .client(getInterceptor())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    fun getServiceOMDB() = getRetrofit().create(OMDBApiInterface::class.java)
+    fun getServiceKunjungan() = getRetrofitKunjungan().create(OMDBApiInterface::class.java)
 
 }

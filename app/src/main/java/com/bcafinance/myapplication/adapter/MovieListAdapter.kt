@@ -1,4 +1,5 @@
-package com.example.projectjuara.adapter
+package com.bcafinance.myapplication.adapter
+
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -8,11 +9,11 @@ import androidx.fragment.app.FragmentTransaction
 import com.bcafinance.myapplication.R
 import com.bumptech.glide.Glide
 import com.bcafinance.myapplication.MainActivity
-import com.example.projectjuara.fragment.DetailOrder
-import com.example.projectjuara.model.SearchItem
+import com.bcafinance.myapplication.fragment.DetailOrder
+import com.bcafinance.myapplication.model.SearchItem
 import kotlinx.android.synthetic.main.item_order.view.*
 
-class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
+class  MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
     var data: List<SearchItem> = mutableListOf()
         set(value) {

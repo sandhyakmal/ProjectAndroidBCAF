@@ -21,4 +21,8 @@ class MenuUtamaActivity : AppCompatActivity() {
             startActivity(intent)
         })
     }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+    }
 }

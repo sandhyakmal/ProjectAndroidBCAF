@@ -1,9 +1,13 @@
-package com.example.projectjuara.service
+package com.bcafinance.myapplication.service
 
-import com.example.projectjuara.model.OMDBDetailResponse
-import com.example.projectjuara.model.OMDBResponse
+import com.bcafinance.myapplication.model.DataKunjungan
+import com.bcafinance.myapplication.model.OMDBDetailResponse
+import com.bcafinance.myapplication.model.OMDBResponse
+import com.bcafinance.myapplication.model.ResponseDataKunjungan
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface OMDBApiInterface {
@@ -15,6 +19,6 @@ interface OMDBApiInterface {
     @GET("/?apikey=8a97b2ee")
     fun searchMoviebyId(@Query("i") id:String) : Call<OMDBDetailResponse>
 
-
-
+    @POST("/api/v1/kunjungan")
+    fun sendKunjungan(@Body dataKunjungan: DataKunjungan): Call<ResponseDataKunjungan>
 }

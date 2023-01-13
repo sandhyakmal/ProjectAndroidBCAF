@@ -1,4 +1,4 @@
-package com.example.projectjuara.fragment
+package com.bcafinance.myapplication.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,11 +10,11 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bcafinance.myapplication.R
-import com.example.projectjuara.ICallBackNetwork
+import com.bcafinance.myapplication.ICallBackNetwork
 import com.bcafinance.myapplication.MainActivity
-import com.example.projectjuara.adapter.MovieListAdapter
-import com.example.projectjuara.model.OMDBDetailResponse
-import com.example.projectjuara.model.SearchItem
+import com.bcafinance.myapplication.adapter.MovieListAdapter
+import com.bcafinance.myapplication.model.OMDBDetailResponse
+import com.bcafinance.myapplication.model.SearchItem
 import kotlinx.android.synthetic.main.fragment_list_order.*
 import kotlinx.android.synthetic.main.fragment_list_order.view.*
 
@@ -97,7 +97,6 @@ class ListOrder : Fragment(),ICallBackNetwork {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterx
         }
-
     }
 
     override fun onFinishDetail(data: OMDBDetailResponse) {

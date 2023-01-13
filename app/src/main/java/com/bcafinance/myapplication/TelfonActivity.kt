@@ -10,34 +10,30 @@ import kotlinx.android.synthetic.main.activity_telfon.*
 
     class TelfonActivity : AppCompatActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_telfon)
+            var a = intent.getStringExtra("telfon1")
 
+            super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_telfon)
+            txtTelpon1.setText(a)
             teleponYa.setOnClickListener({
+                inpPrefixUpdate.setText("")
+                inpPrefixUpdate.isEnabled = false
+                inpTelepon1Update.setText("")
+                inpTelepon1Update.isEnabled = false
+            })
+
+            telefonTidak.setOnClickListener({
+                inpPrefixUpdate.isEnabled = true
                 inpTelepon1Update.isEnabled = true
-//                txtPrfx.visibility = View.GONE
-//                cardPrefix.visibility = View.GONE
-//                txtTlp1.visibility = View.GONE
-//                cardTlp1.visibility = View.GONE
             })
 
             telepon2Ya.setOnClickListener {
-                inpTelepon2Update.isEnabled = true
-//                txtVwTelpon2.visibility = View.GONE
-//                cardTelfon2.visibility = View.GONE
+                inpTelepon2Update.isEnabled = false
+                inpTelepon2Update.setText("")
             }
 
-            telefonTidak.setOnClickListener({
-                inpTelepon1Update.isEnabled = false
-//                cardPrefix.visibility = View.VISIBLE
-//                txtTlp1.visibility = View.VISIBLE
-//                cardTlp1.visibility = View.VISIBLE
-            })
-
             telefon2Tidak.setOnClickListener {
-                inpTelepon1Update.isEnabled = false
-//                txtVwTelpon2.visibility = View.VISIBLE
-//                cardTelfon2.visibility = View.VISIBLE
+                inpTelepon2Update.isEnabled = true
             }
 
 

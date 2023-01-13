@@ -1,4 +1,4 @@
-package com.example.projectjuara.model
+package com.bcafinance.myapplication.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

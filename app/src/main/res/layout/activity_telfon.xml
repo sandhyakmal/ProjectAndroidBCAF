@@ -156,9 +156,10 @@
                     android:id="@+id/inpPrefixUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="021"
                     android:inputType="phone"
                     android:padding="5dp"
-                    android:hint="021"
                     android:textColor="#000000"
                     android:textSize="16sp" />
             </com.google.android.material.card.MaterialCardView>
@@ -198,6 +199,7 @@
                     android:id="@+id/inpTelepon1Update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
                     android:hint="14022"
                     android:inputType="phone"
                     android:padding="5dp"
@@ -308,6 +310,7 @@
                     android:id="@+id/inpTelepon2Update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
                     android:hint="08121023456"
                     android:inputType="phone"
                     android:padding="5dp"

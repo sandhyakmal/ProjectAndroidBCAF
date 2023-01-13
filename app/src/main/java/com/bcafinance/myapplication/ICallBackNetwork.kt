@@ -1,7 +1,7 @@
-package com.example.projectjuara
+package com.bcafinance.myapplication
 
-import com.example.projectjuara.model.OMDBDetailResponse
-import com.example.projectjuara.model.SearchItem
+import com.bcafinance.myapplication.model.OMDBDetailResponse
+import com.bcafinance.myapplication.model.SearchItem
 
 interface ICallBackNetwork {
 

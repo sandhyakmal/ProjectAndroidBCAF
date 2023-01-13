@@ -1,4 +1,4 @@
-package com.example.projectjuara.fragment
+package com.bcafinance.myapplication.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.bcafinance.myapplication.InpKunjunganActivity
 import com.bcafinance.myapplication.R
-import com.example.projectjuara.ICallBackNetwork
+import com.bcafinance.myapplication.ICallBackNetwork
 import com.bcafinance.myapplication.MainActivity
-import com.example.projectjuara.model.OMDBDetailResponse
-import com.example.projectjuara.model.SearchItem
+import com.bcafinance.myapplication.model.OMDBDetailResponse
+import com.bcafinance.myapplication.model.SearchItem
 import kotlinx.android.synthetic.main.fragment_detail_order.*
 import kotlinx.android.synthetic.main.fragment_detail_order.view.*
 
@@ -29,6 +29,7 @@ class DetailOrder : Fragment(), ICallBackNetwork {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var tlf1:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +49,7 @@ class DetailOrder : Fragment(), ICallBackNetwork {
 
         view.btnInputKunjungan.setOnClickListener(View.OnClickListener {
             val intent = Intent (getActivity(), InpKunjunganActivity::class.java)
+            intent.putExtra("telfon1", tlf1)
             getActivity()?.startActivity(intent)
         })
         return view
@@ -78,6 +80,7 @@ class DetailOrder : Fragment(), ICallBackNetwork {
     }
 
     override fun onFinishDetail(data: OMDBDetailResponse) {
+        tlf1 = data.imdbID
         txtCustomer.setText(data.title)
         txtTypes.setText(data.type)
         txtAccounts.setText(data.imdbID)
