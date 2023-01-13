@@ -24,7 +24,7 @@ class NetworkConfig {
             .build()
     }
 
-    var ip = "192.168.200.166"
+    var ip = "192.168.137.64"
 
     fun getRetrofitKunjungan(): Retrofit{
         return Retrofit.Builder()
