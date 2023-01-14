@@ -28,5 +28,13 @@ class userResponse {
         @SerializedName("activated")
         @Expose
         var activated: Boolean? = null
+
+        @SerializedName("mobile")
+        @Expose
+        var mobile: Boolean? = null
+
+        @SerializedName("password")
+        @Expose
+        var password: String? = null
     }
 }

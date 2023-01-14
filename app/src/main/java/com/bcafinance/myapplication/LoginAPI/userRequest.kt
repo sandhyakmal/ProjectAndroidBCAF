@@ -11,4 +11,12 @@ class userRequest {
     @SerializedName("password")
     @Expose
     var password: String? = null
+
+    @SerializedName("activated")
+    @Expose
+    var activated: Boolean? = null
+
+    @SerializedName("id")
+    @Expose
+    var id: String? = null
 }
