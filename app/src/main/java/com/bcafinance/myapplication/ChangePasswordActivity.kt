@@ -2,6 +2,7 @@ package com.bcafinance.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bcafinance.myapplication.LoginAPI.Retro
@@ -52,17 +53,18 @@ class ChangePasswordActivity : AppCompatActivity() {
         request.id = sharedPref.getString(Constant.PREF_ID)
         request.password = txtPasswordNew.text.toString()
         request.activated = true
+
         if(txtPasswordOld.text.toString().equals(sharedPref.getString(Constant.PREF_PASSWORD))){
             val retro = Retro().getRetroClientInstance().create(UserApi::class.java)
             retro.changePassword(request).enqueue(object : Callback<userResponse> {
                 override fun onResponse(call: Call<userResponse>, response: Response<userResponse>) {
-                    moveIntent()
-                    Toast.makeText(applicationContext, "Password berhasil diupdate, Silahkan Login Kembali", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Password GAGAL diupdate, Silahkan coba lagi", Toast.LENGTH_LONG).show()
                 }
 
                 override fun onFailure(call: Call<userResponse>, t: Throwable) {
-                    Toast.makeText(applicationContext, "Password GAGAL diupdate, Silahkan coba lagi", Toast.LENGTH_LONG).show()
-                    changePassword()
+//                    Toast.makeText(applicationContext, "Password GAGAL diupdate, Silahkan coba lagi", Toast.LENGTH_LONG).show()
+                    moveIntent()
+                    Toast.makeText(applicationContext, "Password berhasil diupdate, Silahkan Login Kembali", Toast.LENGTH_LONG).show()
                 }
             })
         }else{

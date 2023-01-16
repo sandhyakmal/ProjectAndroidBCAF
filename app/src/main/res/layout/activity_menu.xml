@@ -107,7 +107,7 @@
                     <TextView
                         android:id="@+id/textView8"
                         android:layout_width="102dp"
-                        android:layout_height="19dp"
+                        android:layout_height="wrap_content"
                         android:text="Data Tertunda"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -160,6 +160,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardSetting"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="1"

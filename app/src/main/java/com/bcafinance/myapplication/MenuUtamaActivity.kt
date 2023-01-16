@@ -43,6 +43,10 @@ class MenuUtamaActivity : AppCompatActivity() {
 
 
 
+        cardSetting.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this,SettingActivity::class.java)
+            startActivity(intent)
+        })
     }
 
     private fun moveIntent(){
