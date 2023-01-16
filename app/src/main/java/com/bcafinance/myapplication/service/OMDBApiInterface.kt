@@ -1,12 +1,12 @@
 package com.example.projectjuara.service
 
-import com.bcafinance.myapplication.model.Data
-import com.bcafinance.myapplication.model.OrderDetailResponse
-import com.bcafinance.myapplication.model.OrderResponse
+import com.bcafinance.myapplication.model.*
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.OMDBResponse
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface OMDBApiInterface {
@@ -26,6 +26,6 @@ interface OMDBApiInterface {
     @GET("/api/v1/account/for/user/detail")
     fun searchOrderbyAccountNumber(@Query("accountNumber") account:String) : Call<OrderDetailResponse>
 
-
-
+    @POST("/api/v1/kunjungan")
+    fun sendKunjungan(@Body dataKunjungan: DataKunjungan): Call<ResponseDataKunjungan>
 }

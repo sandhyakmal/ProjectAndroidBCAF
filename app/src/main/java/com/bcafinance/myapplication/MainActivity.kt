@@ -73,46 +73,4 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
-
-    fun searchMovie(title:String, callbackNetwork : ICallBackNetwork) {
-
-        var data : List<SearchItem>? = null
-        NetworkConfig().getServiceOMDB().searchMovie(title).enqueue(object :
-            Callback<OMDBResponse> {
-            override fun onResponse(call: Call<OMDBResponse>, response: Response<OMDBResponse>) {
-                Log.d("Response OMDB APi search", response.toString())
-
-                if(response.body()?.search!=null) {
-                    data = (response.body()?.search as List<SearchItem>)
-                    callbackNetwork.onFinish(data!!)
-                }
-            }
-
-            override fun onFailure(call: Call<OMDBResponse>, t: Throwable) {
-                Log.e("Failed Response", t.message.toString())
-                callbackNetwork.onFailed()
-            }
-
-        })
-    }
-
-    fun searchMoviebyId(idMovie:String, callbackNetwork: DetailOrder) {
-
-        NetworkConfig().getServiceOMDB().searchMoviebyId(idMovie).enqueue(object : Callback<OMDBDetailResponse>{
-            override fun onResponse(
-                call: Call<OMDBDetailResponse>,
-                response: Response<OMDBDetailResponse>
-            ) {
-                if(response.body() !=null) {
-                    callbackNetwork.onFinishDetail(response.body()as OMDBDetailResponse)
-                }
-            }
-
-            override fun onFailure(call: Call<OMDBDetailResponse>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
-
 }

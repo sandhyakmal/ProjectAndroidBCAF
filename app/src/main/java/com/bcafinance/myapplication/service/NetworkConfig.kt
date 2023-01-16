@@ -7,27 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
 class NetworkConfig {
-
-
-    //OMDB API
-    fun getInterceptor() : OkHttpClient {
-        var logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
-
-        val okHttpClient  = OkHttpClient.Builder().addInterceptor(logging).build()
-
-        return  okHttpClient
-    }
-    fun getRetrofit() : Retrofit{
-        return  Retrofit.Builder()
-            .baseUrl("https://www.omdbapi.com")
-            .client(getInterceptor())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-    fun getServiceOMDB() = getRetrofit().create(OMDBApiInterface::class.java)
-
+    var ip = "192.168.137.1"
 
     //UJIAN API
     fun getInterceptorUjian() : OkHttpClient {
@@ -41,7 +21,7 @@ class NetworkConfig {
 
     fun getRetrofitUjian() : Retrofit{
         return  Retrofit.Builder()
-            .baseUrl("http://192.168.137.64:8080")
+            .baseUrl("http://${ip}:8080")
             .client(getInterceptorUjian())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -49,5 +29,22 @@ class NetworkConfig {
 
     fun getServiceUjian() = getRetrofitUjian().create(OMDBApiInterface::class.java)
 
+    fun getInterceptorKunjungan() : OkHttpClient {
+        var logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
 
+        val okHttpClient  = OkHttpClient.Builder().addInterceptor(logging).build()
+
+        return  okHttpClient
+    }
+
+    fun getRetrofitKunjungan(): Retrofit{
+        return Retrofit.Builder()
+            .baseUrl("http://${ip}:8080")
+            .client(getInterceptorKunjungan())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    fun getServiceKunjungan() = getRetrofitKunjungan().create(OMDBApiInterface::class.java)
 }
