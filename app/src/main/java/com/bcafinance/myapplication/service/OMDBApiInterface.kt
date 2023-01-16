@@ -4,10 +4,7 @@ import com.bcafinance.myapplication.model.*
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.OMDBResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface OMDBApiInterface {
 //    http://www.omdbapi.com/?apikey=8a97b2ee&s=Terminator

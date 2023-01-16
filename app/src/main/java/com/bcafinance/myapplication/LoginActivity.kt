@@ -66,12 +66,14 @@ class LoginActivity : AppCompatActivity() {
                     if (lokasi == PackageManager.PERMISSION_DENIED) {
                         val permission = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
                         requestPermissions(permission, GPS_REQUEST_CODE)
-                    } else if(lokasi == PackageManager.PERMISSION_GRANTED && User?.data?.mobile==true){
+                    } else if(lokasi == PackageManager.PERMISSION_GRANTED && User?.data?.mobile==true){ //harus mobile true
                         //Shared Preference
                         sharedPref.putBoolean(Constant.PREF_IS_LOGIN, true)
                         sharedPref.putString(Constant.PREF_ID, User?.data?.id.toString())
                         sharedPref.putString(Constant.PREF_PASSWORD, User?.data?.password.toString())
                         sharedPref.putString(Constant.PREF_COVERAN, User?.data?.coveran.toString())
+                        sharedPref.putString(Constant.PREF_COLLECT_NAME, User?.data?.collectName.toString())
+                        sharedPref.putString(Constant.PREF_TITLE, User?.data?.title.toString())
                         if (User?.data?.activated==false){
                             Toast.makeText(applicationContext, "Silahkan ganti password dulu", Toast.LENGTH_LONG).show()
                             val intent = Intent(this@LoginActivity, ChangePasswordActivity::class.java)
