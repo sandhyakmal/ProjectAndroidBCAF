@@ -9,6 +9,8 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bcafinance.myapplication.LoginPreference.Constant
+import com.bcafinance.myapplication.LoginPreference.PreferenceHelper
 import com.bcafinance.myapplication.R
 import com.example.projectjuara.ICallBackNetwork
 import com.bcafinance.myapplication.MainActivity
@@ -37,12 +39,16 @@ class ListOrder : Fragment(),ICallBackNetwork {
     private var param1: String? = null
     private var param2: String? = null
 
+    lateinit var sharedPref: PreferenceHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        sharedPref = PreferenceHelper(requireContext())
     }
 
     override fun onCreateView(
@@ -57,17 +63,15 @@ class ListOrder : Fragment(),ICallBackNetwork {
 //            view.textView3.setText(view.spinner.selectedItem.toString())
 //        })
 
-        view.spinner.onItemSelectedListener = object : OnItemSelectedListener{
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                (activity as MainActivity).searchOrder(view.spinner.selectedItem.toString(),this@ListOrder)
-                view.textView3.setText(view.spinner.selectedItem.toString())
-            }
+        view.txtCoveran.setText(sharedPref.getString(Constant.PREF_COVERAN)).toString()
+        val a = sharedPref.getString(Constant.PREF_COVERAN).toString()
+        view.textView3.setText(a)
+        (activity as MainActivity).searchOrder(a,this)
+//        view.txtCoveran.setOnClickListener(View.OnClickListener {
+//
+//        })
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
 
-        }
         return view
     }
 

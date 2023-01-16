@@ -20,6 +20,7 @@ class MenuUtamaActivity : AppCompatActivity() {
 
         sharedPref = PreferenceHelper(this)
 
+//        textView4.setText(sharedPref.getString(Constant.PREF_COVERAN))
 
         cardOrder.setOnClickListener(View.OnClickListener {
             val intent = Intent(this,MainActivity::class.java)

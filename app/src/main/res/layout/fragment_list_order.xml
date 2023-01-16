@@ -46,12 +46,12 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.0">
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:entries="@array/statusOrder"
-            tools:ignore="TouchTargetSizeCheck" />
+        <TextView
+            android:id="@+id/txtCoveran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Coveran" />
     </androidx.cardview.widget.CardView>
 
     <TextView
