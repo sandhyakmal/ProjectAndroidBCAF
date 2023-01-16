@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Toast
 import com.bcafinance.myapplication.LoginPreference.Constant
 import com.bcafinance.myapplication.LoginPreference.PreferenceHelper
+import com.bcafinance.myapplication.fragment.OrderTertunda
+import com.google.android.material.internal.ContextUtils.getActivity
 import kotlinx.android.synthetic.main.activity_menu.*
 
 class MenuUtamaActivity : AppCompatActivity() {
@@ -32,12 +34,17 @@ class MenuUtamaActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
-            cardLogout.setOnClickListener(View.OnClickListener {
-                sharedPref.clear()
-                Toast.makeText(applicationContext, "Logout Succes", Toast.LENGTH_LONG).show()
+        cardLogout.setOnClickListener(View.OnClickListener {
+            sharedPref.clear()
+            Toast.makeText(applicationContext, "Logout Succes", Toast.LENGTH_LONG).show()
 
-                moveIntent()
-            })
+            moveIntent()
+        })
+
+        cardTertunda.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this,TertundaActivity::class.java)
+            startActivity(intent)
+        })
 
 
 
