@@ -1,5 +1,6 @@
 package com.bcafinance.myapplication
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,18 +10,20 @@ class InpKunjunganActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inp_kunjungan)
-        var tlf1 = intent.getStringExtra("tlf1")
-        var tlf2 = intent.getStringExtra("tlf2")
-        var mailAddress = intent.getStringExtra("mailAddress")
-        var userId = intent.getStringExtra("userId")
-        var agingDate = intent.getStringExtra("agingDate")
-        var accountNumber = intent.getStringExtra("accountNumber")
+        var tlf1 = "test no 1" // intent.getStringExtra("tlf1")
+        var tlf2 = "test no 2" // intent.getStringExtra("tlf2")
+        var postalCode = "test postal code" // intent.getStringExtra("postalCode")
+        var mailAddress = "test mail address" // intent.getStringExtra("mailAddress")
+        var userId = "123" //intent.getStringExtra("userId")
+        var agingDate = "test agingdate" // intent.getStringExtra("agingDate")
+        var accountNumber = "345" // intent.getStringExtra("accountNumber")
 
         btnLanjut.setOnClickListener {
             if(txtAlamat.selectedItem.toString().equals("Tidak Sesuai")){
                 intent = Intent(this, AlamatNotValidActivity::class.java)
                 intent.putExtra("tlf1", tlf1)
                 intent.putExtra("tlf2", tlf2)
+                intent.putExtra("postalCode", postalCode)
                 intent.putExtra("mailAddress", mailAddress)
                 intent.putExtra("userId", userId)
                 intent.putExtra("agingDate", agingDate)
@@ -36,6 +39,7 @@ class InpKunjunganActivity : AppCompatActivity() {
                 intent = Intent(this, TelfonActivity::class.java)
                 intent.putExtra("tlf1", tlf1)
                 intent.putExtra("tlf2", tlf2)
+                intent.putExtra("postalCode", postalCode)
                 intent.putExtra("mailAddress", mailAddress)
                 intent.putExtra("userId", userId)
                 intent.putExtra("agingDate", agingDate)

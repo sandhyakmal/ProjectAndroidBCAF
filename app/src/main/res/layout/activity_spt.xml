@@ -136,7 +136,7 @@
                 app:strokeWidth="1dp">
 
                 <EditText
-                    android:id="@+id/inpTelepon1Update"
+                    android:id="@+id/inpPenerima"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nama Anda"
