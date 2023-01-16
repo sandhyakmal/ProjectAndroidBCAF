@@ -56,13 +56,12 @@ class ChangePasswordActivity : AppCompatActivity() {
             val retro = Retro().getRetroClientInstance().create(UserApi::class.java)
             retro.changePassword(request).enqueue(object : Callback<userResponse> {
                 override fun onResponse(call: Call<userResponse>, response: Response<userResponse>) {
-                    moveIntent()
-                    Toast.makeText(applicationContext, "Password berhasil diupdate, Silahkan Login Kembali", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Password GAGAL diupdate, Silahkan coba lagi", Toast.LENGTH_LONG).show()
                 }
 
                 override fun onFailure(call: Call<userResponse>, t: Throwable) {
-                    Toast.makeText(applicationContext, "Password GAGAL diupdate, Silahkan coba lagi", Toast.LENGTH_LONG).show()
-                    changePassword()
+                    moveIntent()
+                    Toast.makeText(applicationContext, "Password berhasil diupdate, Silahkan Login Kembali", Toast.LENGTH_LONG).show()
                 }
             })
         }else{
