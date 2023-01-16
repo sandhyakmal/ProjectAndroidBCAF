@@ -28,4 +28,7 @@ interface OMDBApiInterface {
 
     @POST("/api/v1/kunjungan")
     fun sendKunjungan(@Body dataKunjungan: DataKunjungan): Call<ResponseDataKunjungan>
+
+    @GET("/api/v1/account/for/user/delivered")
+    fun searchTerkirim(@Query("coveran") search:String) : Call<OrderResponse>
 }

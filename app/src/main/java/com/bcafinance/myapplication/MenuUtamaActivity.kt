@@ -46,6 +46,11 @@ class MenuUtamaActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
+        cardTerkirim.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this,TerkirimActivity::class.java)
+            startActivity(intent)
+        })
+
 
 
 
