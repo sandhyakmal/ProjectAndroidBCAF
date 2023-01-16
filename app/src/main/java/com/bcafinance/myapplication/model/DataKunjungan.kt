@@ -50,7 +50,7 @@ data class DataKunjungan(
 	val statusKonsumen: String? = null,
 
 	@field:SerializedName("accountId")
-	val accountId: Int? = null,
+	val accountId: String? = null,
 
 	@field:SerializedName("fotoKtp")
 	val fotoKtp: String? = null,
@@ -62,5 +62,8 @@ data class DataKunjungan(
 	val agingDate: String? = null,
 
 	@field:SerializedName("statusUnit")
-	val statusUnit: String? = null
+	val statusUnit: String? = null,
+
+	@field:SerializedName("gps")
+	val gps: String? = null
 ) : Parcelable

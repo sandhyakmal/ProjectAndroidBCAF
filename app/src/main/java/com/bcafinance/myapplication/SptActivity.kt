@@ -45,6 +45,7 @@ class SptActivity : AppCompatActivity() {
         var mailAddress = intent.getStringExtra("mailAddress")
         var userId = intent.getStringExtra("userId")
         var agingDate = intent.getStringExtra("agingDate")
+        var accountId = intent.getStringExtra("accountId")
         var accountNumber = intent.getStringExtra("accountNumber")
         var statusKonsumen = intent.getStringExtra("statusKonsumen")
         var statusUnit = intent.getStringExtra("statusUnit")
@@ -63,6 +64,7 @@ class SptActivity : AppCompatActivity() {
         setContentView(R.layout.activity_spt)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getCurrentLocation()
 
         inpJam.setIs24HourView(true)
 
@@ -99,7 +101,6 @@ class SptActivity : AppCompatActivity() {
 
             }else{
                 if(networkInfo != null && networkInfo.isConnected == true){
-                    getCurrentLocation()
 
                     var dataKunjungan = DataKunjungan(
                         hasilKunjungan,
@@ -116,18 +117,21 @@ class SptActivity : AppCompatActivity() {
                         fotoRumahPath,
                         isSpt,
                         statusKonsumen,
-                        accountNumber?.toInt(),
+                        accountId,
                         fotoKtpPath,
                         statusAlamat,
                         agingDate,
-                        statusUnit)
+                        statusUnit,
+                        "${latitude} , ${longitude}")
 
                     var dataKunjunganUpdate = DataKunjunganUpdate(
-                        accountNumber?.toInt(),
-                        userId?.toInt(),
+                        accountId,
+                        accountNumber,
                         mailAddress,
                         tlf1,
-                        tlf2)
+                        tlf2,
+                        userId?.toInt(),
+                    )
 
                     NetworkConfig().getServiceKunjungan().sendKunjungan(dataKunjungan).enqueue(object : retrofit2.Callback<ResponseDataKunjungan>{
                         override fun onResponse(
@@ -175,7 +179,7 @@ class SptActivity : AppCompatActivity() {
                         fotoRumahPath,
                         isSpt,
                         statusKonsumen,
-                        accountNumber?.toInt(),
+                        accountId?.toInt(),
                         fotoKtpPath,
                         statusAlamat,
                         agingDate,
@@ -197,7 +201,7 @@ class SptActivity : AppCompatActivity() {
                 getIntent().removeExtra("mailAddress")
                 getIntent().removeExtra("userId")
                 getIntent().removeExtra("agingDate")
-                getIntent().removeExtra("accountNumber")
+                getIntent().removeExtra("accountId")
                 getIntent().removeExtra("statusKonsumen")
                 getIntent().removeExtra("statusUnit")
                 getIntent().removeExtra("statusAlamat")
