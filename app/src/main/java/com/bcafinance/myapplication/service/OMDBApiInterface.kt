@@ -30,6 +30,6 @@ interface OMDBApiInterface {
     @POST("/api/v1/kunjungan")
     fun sendKunjungan(@Body dataKunjungan: DataKunjungan): Call<ResponseDataKunjungan>
 
-    @PUT()
+    @PUT("api/v1/account/upd/inputkunjungan")
     fun updateData(@Body dataKunjunganUpdate: DataKunjunganUpdate): Call<ResponseDataKunjungan>
 }

@@ -58,18 +58,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.025" />
 
-            <ImageView
-                android:id="@+id/fotoRumah"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.35"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
-                app:layout_constraintVertical_bias="0.028"
-                tools:srcCompat="@tools:sample/avatars" />
-
             <ImageButton
                 android:id="@+id/btnRumah"
                 android:layout_width="wrap_content"
@@ -80,7 +68,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/fotoRumah"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
-                app:layout_constraintVertical_bias="0.284"
+                app:layout_constraintVertical_bias="0.311"
                 app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
 
             <TextView
@@ -98,18 +86,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/fotoRumah"
                 app:layout_constraintVertical_bias="0.056" />
 
-            <ImageView
-                android:id="@+id/fotoKTP"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.35"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
-                app:layout_constraintVertical_bias="0.072"
-                tools:srcCompat="@tools:sample/avatars" />
-
             <ImageButton
                 android:id="@+id/btnKTP"
                 android:layout_width="wrap_content"
@@ -120,7 +96,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/fotoKTP"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"
-                app:layout_constraintVertical_bias="0.514"
+                app:layout_constraintVertical_bias="0.566"
                 app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
 
             <Button
@@ -133,6 +109,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fotoKTP"
                 app:layout_constraintVertical_bias="0.415" />
+
+            <ImageView
+                android:id="@+id/fotoRumah"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.383"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintVertical_bias="0.064"
+                app:srcCompat="@drawable/photo" />
+
+            <ImageView
+                android:id="@+id/fotoKTP"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.383"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintVertical_bias="0.132"
+                app:srcCompat="@drawable/photo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

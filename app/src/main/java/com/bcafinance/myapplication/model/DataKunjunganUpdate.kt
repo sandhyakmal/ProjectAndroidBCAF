@@ -9,6 +9,9 @@ data class DataKunjunganUpdate(
     @field:SerializedName("accountId")
     val accountId: Int? = null,
 
+    @field:SerializedName("userId")
+    val userId: Int? = null,
+
     @field:SerializedName("mailAddress")
     val mailAddress: String? = null,
 

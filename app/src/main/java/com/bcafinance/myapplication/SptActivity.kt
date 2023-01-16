@@ -9,6 +9,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -17,6 +18,7 @@ import androidx.core.app.ActivityCompat
 import com.bcafinance.myapplication.database.KunjunganLocalDB
 import com.bcafinance.myapplication.model.DataKunjungan
 import com.bcafinance.myapplication.model.DataKunjunganLocal
+import com.bcafinance.myapplication.model.DataKunjunganUpdate
 import com.bcafinance.myapplication.model.ResponseDataKunjungan
 import com.example.projectjuara.service.NetworkConfig
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -119,12 +121,35 @@ class SptActivity : AppCompatActivity() {
                         statusAlamat,
                         agingDate,
                         statusUnit)
+
+                    var dataKunjunganUpdate = DataKunjunganUpdate(
+                        accountNumber?.toInt(),
+                        userId?.toInt(),
+                        mailAddress,
+                        tlf1,
+                        tlf2)
+
                     NetworkConfig().getServiceKunjungan().sendKunjungan(dataKunjungan).enqueue(object : retrofit2.Callback<ResponseDataKunjungan>{
                         override fun onResponse(
                             call: Call<ResponseDataKunjungan>,
                             response: Response<ResponseDataKunjungan>
                         ) {
                             if(response.isSuccessful){
+                                Toast.makeText(applicationContext, response.message(), Toast.LENGTH_LONG).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ResponseDataKunjungan>, t: Throwable) {
+                            Log.e("error post", t.printStackTrace().toString())
+                        }
+                    })
+
+                    NetworkConfig().getServiceKunjungan().updateData(dataKunjunganUpdate).enqueue(object : retrofit2.Callback<ResponseDataKunjungan>{
+                        override fun onResponse(
+                            call: Call<ResponseDataKunjungan>,
+                            response: Response<ResponseDataKunjungan>
+                        ) {
+                            if (response.isSuccessful){
                                 Toast.makeText(applicationContext, response.message(), Toast.LENGTH_LONG).show()
                             }
                         }
