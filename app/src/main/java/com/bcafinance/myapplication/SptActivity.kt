@@ -2,22 +2,28 @@ package com.bcafinance.myapplication
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.bcafinance.myapplication.database.KunjunganLocalDB
 import com.bcafinance.myapplication.model.DataKunjungan
+import com.bcafinance.myapplication.model.DataKunjunganLocal
 import com.bcafinance.myapplication.model.ResponseDataKunjungan
 import com.example.projectjuara.service.NetworkConfig
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_spt.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 
@@ -56,8 +62,6 @@ class SptActivity : AppCompatActivity() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        getCurrentLocation()
-
         inpJam.setIs24HourView(true)
 
         radioTerkirim.setOnClickListener {
@@ -84,52 +88,101 @@ class SptActivity : AppCompatActivity() {
             jamKunjungan = "${jamInp}:${menitInp}"
         }
         btnSubmit.setOnClickListener {
+            val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val networkInfo = cm.activeNetworkInfo
             if(inpPenerima.text.toString().equals("")){
                 Toast.makeText(applicationContext, "Isi Penerima Dahulu!", Toast.LENGTH_LONG).show()
             }else if(isFilled == false){
                 Toast.makeText(applicationContext, "Isi Keterangan SPT Dahulu!", Toast.LENGTH_LONG).show()
 
-            } else{
-//                var dataKunjungan = DataKunjungan(
-//                    hasilKunjungan,
-//                    postalCode,
-//                    inpPenerima.text.toString(),
-//                    tlf1,
-//                    jamKunjungan,
-//                    mailAddress,
-//                    tlf2,
-//                    remark,
-//                    true,
-//                    bertemuDengan,
-//                    userId?.toInt(),
-//                    fotoRumahPath,
-//                    isSpt,
-//                    statusKonsumen,
-//                    accountNumber?.toInt(),
-//                    fotoKtpPath,
-//                    statusAlamat,
-//                    agingDate,
-//                    statusUnit)
-//                NetworkConfig().getServiceKunjungan().sendKunjungan(dataKunjungan).enqueue(object : retrofit2.Callback<ResponseDataKunjungan>{
-//                    override fun onResponse(
-//                        call: Call<ResponseDataKunjungan>,
-//                        response: Response<ResponseDataKunjungan>
-//                    ) {
-//                        if(response.isSuccessful){
-//                            Toast.makeText(applicationContext, response.message(), Toast.LENGTH_LONG).show()
-//                        }
-//                    }
-//
-//                    override fun onFailure(call: Call<ResponseDataKunjungan>, t: Throwable) {
-//                        Log.e("error post", t.printStackTrace().toString())
-//                    }
-//                })
-//
-//                finish()
-//                val intent = Intent(this, InpKunjunganActivity::class.java)
-//                val intent = Intent(this, MenuUtamaActivity::class.java)
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//                startActivity(intent)
+            }else{
+                if(networkInfo != null && networkInfo.isConnected == true){
+                    getCurrentLocation()
+
+                    var dataKunjungan = DataKunjungan(
+                        hasilKunjungan,
+                        postalCode,
+                        inpPenerima.text.toString(),
+                        tlf1,
+                        jamKunjungan,
+                        mailAddress,
+                        tlf2,
+                        remark,
+                        true,
+                        bertemuDengan,
+                        userId?.toInt(),
+                        fotoRumahPath,
+                        isSpt,
+                        statusKonsumen,
+                        accountNumber?.toInt(),
+                        fotoKtpPath,
+                        statusAlamat,
+                        agingDate,
+                        statusUnit)
+                    NetworkConfig().getServiceKunjungan().sendKunjungan(dataKunjungan).enqueue(object : retrofit2.Callback<ResponseDataKunjungan>{
+                        override fun onResponse(
+                            call: Call<ResponseDataKunjungan>,
+                            response: Response<ResponseDataKunjungan>
+                        ) {
+                            if(response.isSuccessful){
+                                Toast.makeText(applicationContext, response.message(), Toast.LENGTH_LONG).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ResponseDataKunjungan>, t: Throwable) {
+                            Log.e("error post", t.printStackTrace().toString())
+                        }
+                    })
+                }else{
+                    var dataKunjunganLocal = DataKunjunganLocal(
+                        0,
+                        hasilKunjungan,
+                        postalCode,
+                        inpPenerima.text.toString(),
+                        tlf1,
+                        jamKunjungan,
+                        mailAddress,
+                        tlf2,
+                        remark,
+                        true,
+                        bertemuDengan,
+                        userId?.toInt(),
+                        fotoRumahPath,
+                        isSpt,
+                        statusKonsumen,
+                        accountNumber?.toInt(),
+                        fotoKtpPath,
+                        statusAlamat,
+                        agingDate,
+                        statusUnit)
+
+                    GlobalScope.launch {
+                        KunjunganLocalDB.getInstance(applicationContext).kunjunganDao().insertKunjungan(dataKunjunganLocal)
+                        runOnUiThread {
+                            Toast.makeText(applicationContext, "Offline, Data Tesimpan", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+
+                finish()
+                val intent = Intent(this, MenuUtamaActivity::class.java)
+                getIntent().removeExtra("tlf1")
+                getIntent().removeExtra("tlf2")
+                getIntent().removeExtra("postalCode")
+                getIntent().removeExtra("mailAddress")
+                getIntent().removeExtra("userId")
+                getIntent().removeExtra("agingDate")
+                getIntent().removeExtra("accountNumber")
+                getIntent().removeExtra("statusKonsumen")
+                getIntent().removeExtra("statusUnit")
+                getIntent().removeExtra("statusAlamat")
+                getIntent().removeExtra("bertemuDengan")
+                getIntent().removeExtra("hasilKunjungan")
+                getIntent().removeExtra("remark")
+                getIntent().removeExtra("fotoKtpPath")
+                getIntent().removeExtra("fotoRumahPath")
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
             }
         }
     }

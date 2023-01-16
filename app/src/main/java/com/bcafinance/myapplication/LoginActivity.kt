@@ -63,11 +63,10 @@ class LoginActivity : AppCompatActivity() {
 
 
                 if(User?.data!=null) {
-                    if (lokasi == PackageManager.PERMISSION_DENIED){
+                    if (lokasi == PackageManager.PERMISSION_DENIED) {
                         val permission = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
                         requestPermissions(permission, GPS_REQUEST_CODE)
-                    }else if(lokasi == PackageManager.PERMISSION_GRANTED ){
-
+                    } else if(lokasi == PackageManager.PERMISSION_GRANTED && User?.data?.mobile==true){
                         //Shared Preference
                         sharedPref.putBoolean(Constant.PREF_IS_LOGIN, true)
                         sharedPref.putString(Constant.PREF_ID, User?.data?.id.toString())

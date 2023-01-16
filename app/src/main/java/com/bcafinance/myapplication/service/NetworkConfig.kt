@@ -27,24 +27,14 @@ class NetworkConfig {
             .build()
     }
 
-    fun getServiceUjian() = getRetrofitUjian().create(OMDBApiInterface::class.java)
-
-    fun getInterceptorKunjungan() : OkHttpClient {
-        var logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
-
-        val okHttpClient  = OkHttpClient.Builder().addInterceptor(logging).build()
-
-        return  okHttpClient
-    }
-
     fun getRetrofitKunjungan(): Retrofit{
         return Retrofit.Builder()
             .baseUrl("http://${ip}:8080")
-            .client(getInterceptorKunjungan())
+            .client(getInterceptorUjian())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
+    fun getServiceUjian() = getRetrofitUjian().create(OMDBApiInterface::class.java)
     fun getServiceKunjungan() = getRetrofitKunjungan().create(OMDBApiInterface::class.java)
 }
