@@ -16,6 +16,7 @@ class InpKunjunganActivity : AppCompatActivity() {
         var mailAddress = intent.getStringExtra("mailAddress")
         var userId = intent.getStringExtra("userId")
         var agingDate = intent.getStringExtra("agingDate")
+        var accountId = intent.getStringExtra("accountId")
         var accountNumber = intent.getStringExtra("accountNumber")
 
         btnLanjut.setOnClickListener {
@@ -27,6 +28,7 @@ class InpKunjunganActivity : AppCompatActivity() {
                 intent.putExtra("mailAddress", mailAddress)
                 intent.putExtra("userId", userId)
                 intent.putExtra("agingDate", agingDate)
+                intent.putExtra("accountId", accountId)
                 intent.putExtra("accountNumber", accountNumber)
                 intent.putExtra("statusKonsumen", txtStatus.selectedItem.toString())
                 intent.putExtra("statusUnit", txtUnit.selectedItem.toString())
@@ -43,6 +45,7 @@ class InpKunjunganActivity : AppCompatActivity() {
                 intent.putExtra("mailAddress", mailAddress)
                 intent.putExtra("userId", userId)
                 intent.putExtra("agingDate", agingDate)
+                intent.putExtra("accountId", accountId)
                 intent.putExtra("accountNumber", accountNumber)
                 intent.putExtra("statusKonsumen", txtStatus.selectedItem.toString())
                 intent.putExtra("statusUnit", txtUnit.selectedItem.toString())

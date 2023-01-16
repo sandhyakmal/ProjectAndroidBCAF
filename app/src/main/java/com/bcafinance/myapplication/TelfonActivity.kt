@@ -19,6 +19,7 @@ class TelfonActivity : AppCompatActivity() {
             var mailAddress = intent.getStringExtra("mailAddress")
             var userId = intent.getStringExtra("userId")
             var agingDate = intent.getStringExtra("agingDate")
+            var accountId = intent.getStringExtra("accountId")
             var accountNumber = intent.getStringExtra("accountNumber")
             var statusKonsumen = intent.getStringExtra("statusKonsumen")
             var statusUnit = intent.getStringExtra("statusUnit")
@@ -29,6 +30,8 @@ class TelfonActivity : AppCompatActivity() {
             super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_telfon)
 
+        txtTelpon1.setText("${tlf1}")
+        txtTelpon2.setText("${tlf2}")
 //            testing
 //            inpRemark.setText("${tlf1}, ${tlf2}, ${mailAddress}")
 
@@ -77,6 +80,7 @@ class TelfonActivity : AppCompatActivity() {
                     intent.putExtra("mailAddress", mailAddress)
                     intent.putExtra("userId", userId)
                     intent.putExtra("agingDate", agingDate)
+                    intent.putExtra("accountId", accountId)
                     intent.putExtra("accountNumber", accountNumber)
                     intent.putExtra("statusKonsumen", statusKonsumen)
                     intent.putExtra("statusUnit", statusUnit)
@@ -89,7 +93,7 @@ class TelfonActivity : AppCompatActivity() {
                         intent.putExtra("tlf1", "${inpPrefixUpdate.text.toString()}${inpTelepon1Update.text.toString()}")
                         intent.putExtra("tlf2", inpTelepon2Update.text.toString())
                     }else if(isBerubah1 == true){
-                        intent.putExtra("tlf1", "${inpPrefixUpdate.text.toString()} ${inpTelepon1Update.text.toString()}")
+                        intent.putExtra("tlf1", "${inpPrefixUpdate.text.toString()}${inpTelepon1Update.text.toString()}")
                         intent.putExtra("tlf2", tlf2)
                     }else if(isBerubah2 == true){
                         intent.putExtra("tlf2", inpTelepon2Update.text.toString())
@@ -98,7 +102,8 @@ class TelfonActivity : AppCompatActivity() {
                         intent.putExtra("tlf2", tlf2)
                         intent.putExtra("tlf1", tlf1)
                     }
-                    startActivity(intent)                }
+                    startActivity(intent)
+                }
             }
         })
     }

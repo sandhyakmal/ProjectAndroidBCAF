@@ -6,11 +6,11 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class DataKunjunganUpdate(
-    @field:SerializedName("accountId")
-    val accountId: Int? = null,
+    @field:SerializedName("id")
+    val accountId: String? = null,
 
-    @field:SerializedName("userId")
-    val userId: Int? = null,
+    @field:SerializedName("accountNumber")
+    val accountNumber: String? = null,
 
     @field:SerializedName("mailAddress")
     val mailAddress: String? = null,
@@ -19,5 +19,8 @@ data class DataKunjunganUpdate(
     val phoneNumber1: String? = null,
 
     @field:SerializedName("phoneNumber2")
-    val phoneNumber2: String? = null
+    val phoneNumber2: String? = null,
+
+    @field:SerializedName("modifiedBy")
+    val modifiedBy: Int? = null
 ):Parcelable
