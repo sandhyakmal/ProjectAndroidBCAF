@@ -72,6 +72,8 @@ class LoginActivity : AppCompatActivity() {
                         sharedPref.putString(Constant.PREF_ID, User?.data?.id.toString())
                         sharedPref.putString(Constant.PREF_PASSWORD, User?.data?.password.toString())
                         sharedPref.putString(Constant.PREF_COVERAN, User?.data?.coveran.toString())
+                        sharedPref.putString(Constant.PREF_COLLECT_NAME, User?.data?.collectName.toString())
+                        sharedPref.putString(Constant.PREF_TITLE, User?.data?.title.toString())
                         if (User?.data?.activated==false){
                             Toast.makeText(applicationContext, "Silahkan ganti password dulu", Toast.LENGTH_LONG).show()
                             val intent = Intent(this@LoginActivity, ChangePasswordActivity::class.java)

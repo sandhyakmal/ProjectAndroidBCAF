@@ -28,8 +28,6 @@ class MenuUtamaActivity : AppCompatActivity() {
 
         sharedPref = PreferenceHelper(this)
 
-
-
 //        textView4.setText(sharedPref.getString(Constant.PREF_COVERAN))
 
         cardOrder.setOnClickListener(View.OnClickListener {
@@ -54,10 +52,16 @@ class MenuUtamaActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
-        //count
-        txtCountOrder.setText(sharedPref.getString(Constant.PREF_TOTAL_ORDER))
+        cardSetting.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this,SettingActivity::class.java)
+            startActivity(intent)
+        })
 
-        textView24.setText(sharedPref.getString(Constant.PREF_TOTAL_ORDER))
+        cardTerkirim.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this,TerkirimActivity::class.java)
+            startActivity(intent)
+        })
+
 
 
 

@@ -4,11 +4,7 @@ import com.bcafinance.myapplication.model.*
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.OMDBResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface OMDBApiInterface {
 //    http://www.omdbapi.com/?apikey=8a97b2ee&s=Terminator
@@ -32,4 +28,7 @@ interface OMDBApiInterface {
 
     @PUT("/api/v1/account/upd/inputkunjungan")
     fun updateData(@Body dataKunjunganUpdate: DataKunjunganUpdate): Call<ResponseDataKunjungan>
+
+    @GET("/api/v1/account/for/user/delivered")
+    fun searchTerkirim(@Query("coveran") search:String) : Call<OrderResponse>
 }

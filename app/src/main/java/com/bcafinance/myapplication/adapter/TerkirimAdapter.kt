@@ -8,14 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bcafinance.myapplication.MainActivity
 import com.bcafinance.myapplication.R
 import com.bcafinance.myapplication.model.DataItem
-import com.bcafinance.myapplication.model.DataKunjunganLocal
 import com.example.projectjuara.fragment.DetailOrder
 import kotlinx.android.synthetic.main.item_order.view.*
-import kotlinx.android.synthetic.main.item_tertunda.view.*
+import kotlinx.android.synthetic.main.item_terkirim.view.*
 
-class TertundaAdapter : RecyclerView.Adapter<TertundaAdapter.ViewHolder>() {
+class TerkirimAdapter : RecyclerView.Adapter<TerkirimAdapter.ViewHolder>() {
 
-    var data: List<DataKunjunganLocal> = mutableListOf()
+    var data: List<DataItem> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -23,7 +22,7 @@ class TertundaAdapter : RecyclerView.Adapter<TertundaAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
        ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_tertunda, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_terkirim, parent, false)
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int){
@@ -33,11 +32,11 @@ class TertundaAdapter : RecyclerView.Adapter<TertundaAdapter.ViewHolder>() {
     override fun getItemCount() = data.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: DataKunjunganLocal) = with(itemView) {
+        fun bind(item: DataItem) = with(itemView) {
 
-            itemView.txtAccount2.setText(item.accountId.toString())
-            itemView.txtName2.setText(item.bertemuDengan)
-            itemView.txtType2.setText(item.hasilKunjungan)
+            itemView.txtAccountTerkirim.setText(item.accountNumber)
+            itemView.txtNameTerkirim.setText(item.name)
+            itemView.txtTypesTerkirim.setText(item.type)
 //
 //            this.setOnClickListener(View.OnClickListener {
 //

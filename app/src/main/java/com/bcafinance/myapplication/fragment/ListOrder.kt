@@ -13,6 +13,7 @@ import com.bcafinance.myapplication.MainActivity
 import com.bcafinance.myapplication.R
 import com.bcafinance.myapplication.adapter.OrderAdapter
 import com.bcafinance.myapplication.model.DataItem
+import com.bcafinance.myapplication.model.DataKunjunganLocal
 import com.bcafinance.myapplication.model.OrderDetailResponse
 import com.example.projectjuara.ICallBackNetwork
 import com.example.projectjuara.model.OMDBDetailResponse
@@ -106,6 +107,10 @@ class ListOrder : Fragment(),ICallBackNetwork {
         }
 
 
+    }
+
+    override fun onFinishKunjungan(data: List<DataKunjunganLocal>) {
+        TODO("Not yet implemented")
     }
 
     override fun onFinish(data: List<SearchItem>) {
