@@ -15,6 +15,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bcafinance.myapplication.adapter.TertundaAdapter
 import com.bcafinance.myapplication.database.KunjunganLocalDB
 import com.bcafinance.myapplication.model.DataKunjungan
 import com.bcafinance.myapplication.model.DataKunjunganLocal
@@ -24,6 +26,7 @@ import com.example.projectjuara.service.NetworkConfig
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_spt.*
+import kotlinx.android.synthetic.main.fragment_order_tertunda.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -257,4 +260,6 @@ class SptActivity : AppCompatActivity() {
             }
         }
     }
+
+
 }

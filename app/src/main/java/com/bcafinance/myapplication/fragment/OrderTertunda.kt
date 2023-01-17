@@ -1,19 +1,26 @@
 package com.bcafinance.myapplication.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bcafinance.myapplication.MainActivity
 import com.bcafinance.myapplication.R
+import com.bcafinance.myapplication.TertundaActivity
 import com.bcafinance.myapplication.adapter.TertundaAdapter
+import com.bcafinance.myapplication.database.KunjunganLocalDB
 import com.bcafinance.myapplication.model.DataItem
+import com.bcafinance.myapplication.model.DataKunjunganLocal
 import com.bcafinance.myapplication.model.OrderDetailResponse
 import com.example.projectjuara.ICallBackNetwork
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.SearchItem
 import kotlinx.android.synthetic.main.fragment_order_tertunda.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,6 +52,7 @@ class OrderTertunda : Fragment(), ICallBackNetwork {
         // Inflate the layout for this fragment
 
         val view = inflater.inflate(R.layout.fragment_order_tertunda, container, false)
+        (activity as TertundaActivity).loadData()
         return view
     }
 
@@ -68,9 +76,15 @@ class OrderTertunda : Fragment(), ICallBackNetwork {
             }
     }
 
+
     lateinit var dataOrder :List<DataItem>
+    lateinit var dataKunjungan :List<DataKunjunganLocal>
     override fun onFinishOrder(data: List<DataItem>) {
-        dataOrder = data
+
+    }
+
+    override fun onFinishKunjungan(data: List<DataKunjunganLocal>) {
+        dataKunjungan = data
         var adapterx = TertundaAdapter()
         adapterx.data = data
 

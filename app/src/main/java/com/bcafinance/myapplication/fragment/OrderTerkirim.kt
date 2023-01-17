@@ -14,6 +14,7 @@ import com.bcafinance.myapplication.TerkirimActivity
 import com.bcafinance.myapplication.adapter.TerkirimAdapter
 import com.bcafinance.myapplication.adapter.TertundaAdapter
 import com.bcafinance.myapplication.model.DataItem
+import com.bcafinance.myapplication.model.DataKunjunganLocal
 import com.bcafinance.myapplication.model.OrderDetailResponse
 import com.example.projectjuara.ICallBackNetwork
 import com.example.projectjuara.model.OMDBDetailResponse
@@ -95,6 +96,10 @@ class OrderTerkirim : Fragment(), ICallBackNetwork {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterx
         }
+    }
+
+    override fun onFinishKunjungan(data: List<DataKunjunganLocal>) {
+        TODO("Not yet implemented")
     }
 
     override fun onFinishDetailOrder(data: OrderDetailResponse) {
