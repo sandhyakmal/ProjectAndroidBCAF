@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bcafinance.myapplication.LoginPreference.Constant
+import com.bcafinance.myapplication.LoginPreference.Constant.Companion.PREF_TOTAL_ORDER
 import com.bcafinance.myapplication.LoginPreference.PreferenceHelper
 import com.bcafinance.myapplication.adapter.OrderAdapter
 import com.bcafinance.myapplication.fragment.OrderTertunda
@@ -62,6 +63,7 @@ class MenuUtamaActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
+        txtCountOrder.setText(sharedPref.getString(Constant.PREF_TOTAL_ORDER))
 
 
 
