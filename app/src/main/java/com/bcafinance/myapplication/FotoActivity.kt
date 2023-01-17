@@ -1,5 +1,6 @@
 package com.bcafinance.myapplication
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -8,6 +9,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_foto.*
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -18,6 +20,7 @@ import java.util.*
 class FotoActivity : AppCompatActivity() {
     private val REQUEST_CAPTURE_RUMAH = 601
     private val REQUEST_CAPTURE_KTP = 602
+    private val REQUEST_CODE_CAMERA = 999
     var fotoKtpPath:String? = null
     var fotoRumahPath:String? = null
     var isFotoKtp:Boolean = false
@@ -30,8 +33,8 @@ class FotoActivity : AppCompatActivity() {
         var mailAddress = intent.getStringExtra("mailAddress")
         var userId = intent.getStringExtra("userId")
         var agingDate = intent.getStringExtra("agingDate")
-        var accountId = intent.getStringExtra("accountId")
         var accountNumber = intent.getStringExtra("accountNumber")
+        var accountId = intent.getStringExtra("accountId")
         var statusKonsumen = intent.getStringExtra("statusKonsumen")
         var statusUnit = intent.getStringExtra("statusUnit")
         var statusAlamat = intent.getStringExtra("statusAlamat")
@@ -43,8 +46,16 @@ class FotoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_foto)
 
+
+        val camera = ContextCompat.checkSelfPermission(this@FotoActivity, Manifest.permission.CAMERA)
+
 //        testing
 //        txtTesting.setText("${mailAddress}, ${tlf1}, ${tlf2}")
+
+        if (camera == PackageManager.PERMISSION_DENIED){
+            val permission = arrayOf(Manifest.permission.CAMERA)
+            requestPermissions(permission, REQUEST_CODE_CAMERA)
+        }
 
         btnRumah.setOnClickListener {
             captureCamera(REQUEST_CAPTURE_RUMAH)
@@ -110,6 +121,23 @@ class FotoActivity : AppCompatActivity() {
         }
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode){
+            REQUEST_CODE_CAMERA -> {
+                if(grantResults.isNotEmpty() && grantResults [0] == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this, "Permission Berhasil", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this, "Maaf Permission Denied", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -118,7 +146,7 @@ class FotoActivity : AppCompatActivity() {
             fotoKTP.setImageBitmap(bitmapImage)
             saveImage(bitmapImage, REQUEST_CAPTURE_KTP)
             isFotoKtp = true
-        }else{
+        }else if (requestCode == REQUEST_CAPTURE_RUMAH && resultCode == AppCompatActivity.RESULT_OK){
             val bitmapImage = data?.extras?.get("data") as Bitmap
             fotoRumah.setImageBitmap(bitmapImage)
             saveImage(bitmapImage, REQUEST_CAPTURE_RUMAH)
