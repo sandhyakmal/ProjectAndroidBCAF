@@ -5,11 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bcafinance.myapplication.LoginPreference.Constant
 import com.bcafinance.myapplication.LoginPreference.PreferenceHelper
+import com.bcafinance.myapplication.adapter.OrderAdapter
 import com.bcafinance.myapplication.fragment.OrderTertunda
+import com.bcafinance.myapplication.model.DataItem
 import com.google.android.material.internal.ContextUtils.getActivity
 import kotlinx.android.synthetic.main.activity_menu.*
+import kotlinx.android.synthetic.main.fragment_list_order.*
+import kotlinx.android.synthetic.main.fragment_list_order.view.*
 
 class MenuUtamaActivity : AppCompatActivity() {
 
@@ -21,6 +27,8 @@ class MenuUtamaActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
 
         sharedPref = PreferenceHelper(this)
+
+
 
 //        textView4.setText(sharedPref.getString(Constant.PREF_COVERAN))
 
@@ -46,8 +54,8 @@ class MenuUtamaActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
-
-
+        //count
+        txtCountOrder.setText(sharedPref.getString(Constant.PREF_TOTAL_ORDER))
 
 
 

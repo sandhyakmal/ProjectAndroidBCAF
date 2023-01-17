@@ -1,24 +1,20 @@
 package com.example.projectjuara.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bcafinance.myapplication.LoginPreference.Constant
 import com.bcafinance.myapplication.LoginPreference.PreferenceHelper
-import com.bcafinance.myapplication.R
-import com.example.projectjuara.ICallBackNetwork
 import com.bcafinance.myapplication.MainActivity
+import com.bcafinance.myapplication.R
 import com.bcafinance.myapplication.adapter.OrderAdapter
-import com.bcafinance.myapplication.model.Data
 import com.bcafinance.myapplication.model.DataItem
 import com.bcafinance.myapplication.model.OrderDetailResponse
-import com.example.projectjuara.adapter.MovieListAdapter
+import com.example.projectjuara.ICallBackNetwork
 import com.example.projectjuara.model.OMDBDetailResponse
 import com.example.projectjuara.model.SearchItem
 import kotlinx.android.synthetic.main.fragment_list_order.*
@@ -106,7 +102,10 @@ class ListOrder : Fragment(),ICallBackNetwork {
         recyclerOrder.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterx
+            sharedPref.putString(Constant.PREF_TOTAL_ORDER, recyclerOrder.adapter?.itemCount.toString())
         }
+
+
     }
 
     override fun onFinish(data: List<SearchItem>) {
