@@ -57,6 +57,8 @@ class MenuUtamaActivity : AppCompatActivity() {
         //count
         txtCountOrder.setText(sharedPref.getString(Constant.PREF_TOTAL_ORDER))
 
+        textView24.setText(sharedPref.getString(Constant.PREF_TOTAL_ORDER))
+
 
 
     }
